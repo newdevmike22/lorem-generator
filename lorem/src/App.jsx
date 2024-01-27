@@ -5,10 +5,19 @@ const App = () => {
   const [count, setCount] = useState(1);
   const [text, setText] = useState([]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let amount = parseInt(count);
+    setText(data.slice(0, amount));
+  };
+
   return (
     <section className="w-[80vw] max-w-[40rem] my-[10rem] mx-auto">
       <h4 className="text-[1.56rem] text-center uppercase">tired of the same old ipsum?</h4>
-      <form className="capitalize tracking-wide mt-8 mb-16 flex justify-center items-center gap-2">
+      <form 
+        className="capitalize tracking-wide mt-8 mb-16 flex justify-center items-center gap-2"
+        onSubmit={handleSubmit}
+      >
         <label className="text-[1.25rem]" htmlFor="amount">paragraphs:</label>
         <input
           className="py-1 px-2 w-16 rounded-md border-transparent bg-[#cbd5e1] text-xl cursor-pointer" 
@@ -25,6 +34,15 @@ const App = () => {
           generate
         </button>
       </form>
+      <article>
+        {text.map((item, index) => {
+          return (
+            <p key={index} className="leading-[2] mb-8">
+              {item}
+            </p>
+          )
+        })}
+      </article>
     </section>
   )
 }
