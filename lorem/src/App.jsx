@@ -1,5 +1,7 @@
 import { useState } from "react";
 import data from "./data";
+import { nanoid } from "nanoid";
+import emoji from "./assets/bored2_emoji.png";
 
 const App = () => {
   const [count, setCount] = useState(1);
@@ -13,7 +15,8 @@ const App = () => {
 
   return (
     <section className="w-[80vw] max-w-[40rem] my-[10rem] mx-auto">
-      <h4 className="text-[1.56rem] text-center uppercase">tired of the same old ipsum?</h4>
+      <img src={emoji} alt="angry emoji" className="w-[350px] h-auto mx-auto mb-5 hover:animate-ping cursor-pointer" />
+      <h4 className="text-[2rem] text-center uppercase font-semibold">tired of the same old<br/>boring lorem ipsum?</h4>
       <form 
         className="capitalize tracking-wide mt-8 mb-16 flex justify-center items-center gap-2"
         onSubmit={handleSubmit}
@@ -30,14 +33,14 @@ const App = () => {
           value={count} 
           onChange={((e) => setCount(e.target.value))}
         />
-        <button className="btn self-stretch" type="submit">
+        <button className="btn self-stretch uppercase font-semibold" type="submit">
           generate
         </button>
       </form>
       <article>
-        {text.map((item, index) => {
+        {text.map((item) => {
           return (
-            <p key={index} className="leading-[2] mb-8">
+            <p key={nanoid()} className="leading-[2] mb-8">
               {item}
             </p>
           )
