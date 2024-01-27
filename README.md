@@ -1,2 +1,2 @@
 # lorem-generator
- react js project w/tailwind css
+ Lorem Ipsum generator created with React JS and Tailwind CSS.
